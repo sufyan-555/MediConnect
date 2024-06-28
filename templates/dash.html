@@ -1,0 +1,133 @@
+<!-- Add medicine section tailwind CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediConnect-Dashboard</title>
+    <link rel="icon" href="static/img/manage.png" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/ec53c9ed31.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6">
+      <!-- Flex container -->
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="pt-2">
+          <a
+            href="#"
+            class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"
+            ><i class="fa-solid fa-grip"></i> Dashboard</a
+          >
+        </div>
+        <!-- Menu -->
+        <div class="hidden space-x-6 md:flex">
+          <a
+            href="/"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Home</a
+          >
+          <a
+            href="#testimonials"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Medicine reminder</a
+          >
+          <a
+            href="/park"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Parkinson's Test</a
+          >
+          <a
+            href="/park"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Health Calculators</a
+          >
+         
+          
+          
+        </div>
+
+        <!-- Button -->
+        <a
+          href="/"
+          class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
+        >
+          Log out
+        </a>
+
+        <!-- Hamburger icon -->
+        <button
+          id="menu-btn"
+          class="block hamburger md:hidden focus:outline-none"
+        >
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden">
+        <div
+          id="menu"
+          class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+        >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
+          
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Medicine Reminder</a
+          >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Health Calculators</a
+          >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >ChatBot</a
+          >
+        </div>
+      </div>
+    </nav>
+
+       <!-- Hero Section -->
+       <section id="hero">
+        <!-- Flex container -->
+        <div
+          class="container flex flex-col-reverse md:flex-row items-center mx-auto mt- space-y-0 md:space-y-0 text-justify"
+        >
+          <!-- Left part -->
+          <div class="flex flex-col mb-32 space-y-12 md:w-1/2 mt-14">
+            <h1
+              class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left text-darkBlue"
+            >
+              Welcome To our Web application, MediConnect
+            </h1>
+            <p
+              class="max-w-sm text-center text-darkGrayishBlue text-xl font-semibold md:text-left"
+            >
+            we provide cutting edge solutions for your health reltaed issues with different AI technologies.
+            </p>
+  
+            <div class="flex justify-center md:justify-start">
+              <a
+                href="/static/img/docpro.png"
+                class="p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold mx-left"
+              >
+                Add Medicine
+              </a>
+            </div>
+          </div>
+          <!-- Right image -->
+  
+          <div class="md:w-1/2">
+            <img src="/static/img/img5.jpg" height="800px"  alt="" class="justify-center px-8" />
+          </div>
+        </div>
+      </section>
+
+
+   
