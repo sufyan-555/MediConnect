@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediConnect</title>
+    <link rel="icon" href="./img/manage.png" />
+    <link rel="stylesheet" href="/main.css" />
+    <script
+      src="https://kit.fontawesome.com/ec53c9ed31.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6">
+      <!-- Flex container -->
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="pt-2">
+          <!-- <img src="img/logo.svg" alt=""> -->
+          <a
+            href="#"
+            class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"
+            ><img
+              src="./img/medicine.gif"
+              height="34px"
+              width="34px"
+              alt=""
+              class="inline-block"
+            />MediConnect</a
+          >
+        </div>
+        <!-- Menu -->
+        <div class="hidden space-x-6 md:flex">
+          <a
+            href="#"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >About</a
+          >
+          <a
+            href="#"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Features</a
+          >
+          <a
+            href="#"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >FaQs</a
+          >
+          <a
+            href="#"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Team</a
+          >
+        </div>
+
+        <!-- Button -->
+        <a
+          href="#"
+          class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
+        >
+          Login
+        </a>
+
+        <!-- Hamburger icon -->
+        <button
+          id="menu-btn"
+          class="block hamburger md:hidden focus:outline-none"
+        >
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden">
+        <div
+          id="menu"
+          class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+        >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">About</a>
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Features</a
+          >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >FaQs</a
+          >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Team</a
+          >
+        </div>
+      </div>
+    </nav>
