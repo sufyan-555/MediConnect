@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <script src="https://kit.fontawesome.com/ec53c9ed31.js" crossorigin="anonymous"></script>
+  <title>Signup</title>
+</head>
+
+<body>
+  <form action="/signup" method="POST">
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+      <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+        <!-- left side -->
+        <div class="flex flex-col justify-center p-8 md:p-14">
+          <span class="mb-3 text-3xl font-bold text-darkBlue">Sign Up</span>
+          <div class="py-3">
+            <span class="mb-2 text-md text-darkBlue font-semibold">Username</span>
+            <input type="text"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              name="username" id="username" required />
+          </div>
+          <div class="py-3">
+            <span class="mb-2 text-md text-darkBlue font-semibold">Email</span>
+            <input type="email"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              name="email" id="email" required />
+          </div>
+          <div class="py-3">
+            <span class="mb-2 text-md text-darkBlue font-semibold">Password</span>
+            <input type="password" name="password" id="password"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500" required />
+          </div>
+          <div class="flex justify-between w-full py-3">
+            <div class="mr-24">
+              <input type="checkbox" name="remember_me" id="remember_me" class="mr-2" />
+              <span class="text-md">Remember me</span>
+            </div>
+          </div>
+          <button type="submit"
+            class="w-full bg-brightRed text-white p-2 rounded-lg mb-6 font-bold hover:bg-brightRedLight hover:text-white hover:border hover:border-gray-300">
+            Sign Up
+          </button>
+  
+          <div class="text-center text-gray-400">
+            Already have an account?
+            <span class="font-semibold text-darkBlue"><a href="/login_page">login</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</body>
+
+</html>
