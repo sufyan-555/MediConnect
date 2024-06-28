@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MediConnect</title>
-    <link rel="icon" href="./img/manage.png" />
-    <link rel="stylesheet" href="/main.css" />
+    <link rel="icon" href="/static/img/medicine.gif" />
+    <link rel="stylesheet" href="/static/css/main.css" />
     <script
       src="https://kit.fontawesome.com/ec53c9ed31.js"
       crossorigin="anonymous"
@@ -24,7 +24,7 @@
             href="#"
             class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"
             ><img
-              src="./img/medicine.gif"
+              src="/static/img/medicine.gif"
               height="34px"
               width="34px"
               alt=""
@@ -133,10 +133,200 @@
           <!-- Right image -->
   
           <div class="md:w-1/2">
-            <img src="./img/img6.jpg" alt="" />
+            <img src="/static/img/img6.jpg" alt="" />
           </div>
         </div>
       </section>
 
-    <script src="./script.js"></script>
+    <!-- Features section -->
+    <section id="features">
+      <!-- Flex container -->
+      <div
+        class="container flex flex-col px-4 mx-auto mt-10 md:mt-20 space-y-12 md:space-y-0 md:flex-row"
+      >
+        <!-- text part -->
+        <div class="flex flex-col space-y-2 md:w-1/2 mt-14">
+          <h2
+            class="max-w-md text-4xl font-bold text-darkBlue text-center mb-6 md:text-left"
+          >
+            What's different about MediConnect?
+          </h2>
+
+          <p
+            class="max-w-sm text-center text-darkGrayishBlue font-semibold md:text-left"
+          >
+            We understand that health concerns don’t follow a schedule, which is
+            why our app provides 24/7 accessibility. Whether you need to check a
+            symptom at midnight or book an appointment early in the morning, our
+            platform is always available.
+          </p>
+        </div>
+
+        <!-- numbered list -->
+        <div class="flex flex-col space-y-8 md:w-1/2">
+          <!-- List item 1 -->
+          <div
+            class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row"
+          >
+            <!-- Heading -->
+            <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+              <div class="flex items-center space-x-2">
+                <div
+                  class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed"
+                >
+                  01
+                </div>
+                <h3 class="text-base text-darkBlue font-bold md:mb-4 md:hidden">
+                  Healthy Parameter Tracking
+                </h3>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="hidden mb-4 text-lg text-darkBlue font-bold md:block">
+                Healthy Parameter Tracking
+              </h3>
+              <div class="p text-darkGrayishBlue font-semibold">
+                Keep a close eye on your health with our comprehensive tracking
+                tools. Monitor key parameters like blood pressure,heart rate etc
+                here. Empower yourself with the data you need to make informed
+                decisions about your well-being.
+              </div>
+            </div>
+          </div>
+
+          <!-- List Item 02 -->
+          <div
+            class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row"
+          >
+            <!-- Heading -->
+            <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+              <div class="flex items-center space-x-2">
+                <div
+                  class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed"
+                >
+                  02
+                </div>
+                <h3 class="text-base text-darkBlue font-bold md:mb-4 md:hidden">
+                  Medicine Timer & management
+                </h3>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="hidden mb-4 text-lg text-darkBlue font-bold md:block">
+                Medicine Timer & management
+              </h3>
+              <div class="p text-darkGrayishBlue font-semibold">
+                Never miss a dose with our intuitive Medicine Timer. Set
+                reminders for all your medications, and receive timely
+                notifications to ensure you stay on track with your treatment
+                plan.
+              </div>
+            </div>
+          </div>
+          <!-- List item 03 -->
+
+          <div
+            class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row"
+          >
+            <!-- Heading -->
+            <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+              <div class="flex items-center space-x-2">
+                <div
+                  class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed"
+                >
+                  03
+                </div>
+                <h3 class="text-base font-bold md:mb-4 md:hidden">
+                  Medical Chatbot & AI technology
+                </h3>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="hidden mb-4 text-lg text-darkBlue font-bold md:block">
+                Medical Chatbot & AI technology
+              </h3>
+              <div class="p text-darkGrayishBlue font-semibold">
+                Get instant medical advice and support with our 24/7 Medical
+                Chatbot. Whether you have a question about symptoms, need
+                guidance on medication, or want to know when to seek
+                professional help, our AI-driven chatbot is here to assist you
+                with reliable information and personalized suggestions
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+     <!-- Testimonial section -->
+     <section id="testimonials">
+      <!-- Container to heading and testm blocks -->
+      <div class="max-w-6xl px-5 mx-auto mt-32 text-center">
+        <!-- Heading -->
+        <h2 class="text-4xl font-bold text-darkBlue text-center">
+          Read trusted reviews from our customers
+        </h2>
+        <!-- Testimonials container -->
+        <div class="flex flex-col mt-24 md:flex-row md:space-x-6">
+          <!-- Testimonial 01 -->
+          <div
+            class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3"
+          >
+            <img src="/static/img/avatar-anisha.png" class="w-16 -mt-14" />
+            <h5 class="text-lg text-darkBlue font-bold">Anisha Li</h5>
+
+            <p class="text-base text-darkGrayishBlue">
+              "I've been using the healthcare web app for months now, and it's
+              been a game-changer. From managing my medications with the
+              Medicine Timer to easily booking appointments"
+            </p>
+          </div>
+
+          <!-- Testimonial 02 -->
+          <div
+            class="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3"
+          >
+            <img src="/static/img/avatar-ali.png" class="w-16 -mt-14" />
+            <h5 class="text-lg text-darkBlue font-bold">Frea Andersen</h5>
+
+            <p class="text-base text-darkGrayishBlue">
+              "The Medical Chatbot is incredibly helpful. It's always available
+              to answer my health-related questions promptly.It's like having a
+              knowledgeable friend on hand for suggestions."
+            </p>
+          </div>
+
+          <!-- Testimonial 03 -->
+          <div
+            class="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3"
+          >
+            <img src="/static/img/avatar-richard.png" class="w-16 -mt-14" />
+            <h5 class="text-lg font-bold text-darkBlue">Richard Watts</h5>
+
+            <p class="text-base text-darkGrayishBlue">
+              "I've used many healthcare apps before, but this one stands out
+              for its user-centric design support. The customer service team is
+              very helpful for everyday health management."
+            </p>
+          </div>
+        </div>
+
+        <!-- Button -->
+        <div class="my-20">
+          <a
+            href="/login_page"
+            class="p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline font-semibold hover:bg-brightRedLight"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <script src="/static/script.js"></script>
     </body>
