@@ -129,7 +129,7 @@
 
           <button
             class="w-full bg-brightRed text-white p-2 rounded-lg mb-6 font-bold hover:bg-brightRedLight hover:text-white hover:border hover:border-gray-300">
-            <a href="#">Add</a>
+            <a>Add</a>
           </button>
         </form>
       </div>
@@ -173,72 +173,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Paracetamol</td>
-                        <td>08:00 AM</td>
-                        <td>123456</td>
-                        <td><img src="https://via.placeholder.com/50" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                    </tr>
-                    <tr>
-                        <td>Ibuprofen</td>
-                        <td>12:00 PM</td>
-                        <td>654321</td>
-                        <td><img src="https://via.placeholder.com/50" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                    </tr>
-                    <tr>
-                        <td>Aspirin</td>
-                        <td>04:00 PM</td>
-                        <td>112233</td>
-                        <td><img src="https://via.placeholder.com/50" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                    </tr>
-                    <tr>
-                        <td>Amoxicillin</td>
-                        <td>08:00 PM</td>
-                        <td>223344</td>
-                        <td><img src="https://via.placeholder.com/50" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                        <td>❌</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                    </tr>
-                    <tr>
-                        <td>Metformin</td>
-                        <td>10:00 PM</td>
-                        <td>334455</td>
-                        <td><img src="https://via.placeholder.com/50" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                        <td>✔️</td>
-                    </tr>
-                </tbody>
+                  {% for med in medicines %}
+                  <tr>
+                      <td>{{ med.name }}</td>
+                      <td>{{ med.time }}</td>
+                      <td>{{ med.chat_id }}</td>
+                      <td><img src="static\img\avatar-ali.png" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
+                      <td>{% if med.monday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.tuesday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.wednesday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.thursday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.friday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.saturday %}✔️{% else %}❌{% endif %}</td>
+                      <td>{% if med.sunday %}✔️{% else %}❌{% endif %}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
             </table>
         </div>
     </div>
