@@ -24,7 +24,8 @@
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <div class="pt-2">
-        <a href="/dashboard" class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"><i class="fa-solid fa-grip"></i>
+        <a href="/dashboard" class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"><i
+            class="fa-solid fa-grip"></i>
           Dashboard</a>
       </div>
       <!-- Menu -->
@@ -155,47 +156,57 @@
 
   <div class="container mt-5 d-flex justify-content-center">
     <div class="row d-flex justify-content-center">
-        <div class="col-12">
-            <table class="table table-image">
-                <thead>
-                    <tr>
-                        <th scope="col">Medicine Name</th>
-                        <th scope="col">Medicine Time</th>
-                        <th scope="col">Telegram ChatId</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Mon</th>
-                        <th scope="col">Tue</th>
-                        <th scope="col">Wed</th>
-                        <th scope="col">Thu</th>
-                        <th scope="col">Fri</th>
-                        <th scope="col">Sat</th>
-                        <th scope="col">Sun</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  {% for med in medicines %}
-                  <tr>
-                      <td>{{ med.name }}</td>
-                      <td>{{ med.time }}</td>
-                      <td>{{ med.chat_id }}</td>
-                      <td><img src="static\img\avatar-ali.png" class="img-fluid img-thumbnail" alt="Medicine Image"></td>
-                      <td>{% if med.monday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.tuesday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.wednesday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.thursday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.friday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.saturday %}✔️{% else %}❌{% endif %}</td>
-                      <td>{% if med.sunday %}✔️{% else %}❌{% endif %}</td>
-                  </tr>
-                  {% endfor %}
-              </tbody>
-            </table>
-        </div>
+      <div class="col-12">
+        <table class="table table-image">
+          <thead>
+            <tr>
+              <th scope="col">Medicine Name</th>
+              <th scope="col">Medicine Time</th>
+              <th scope="col">Telegram ChatId</th>
+              <th scope="col">Image</th>
+              <th scope="col">Mon</th>
+              <th scope="col">Tue</th>
+              <th scope="col">Wed</th>
+              <th scope="col">Thu</th>
+              <th scope="col">Fri</th>
+              <th scope="col">Sat</th>
+              <th scope="col">Sun</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for med in medicines %}
+            <tr>
+              <td>{{ med.name }}</td>
+              <td>{{ med.time }}</td>
+              <td>{{ med.chat_id }}</td>
+              <td>{% if med.image %}
+                <img src="data:image/jpeg;base64,{{ med.image }}" class="img-fluid img-thumbnail"
+                  alt="Complaint File">
+                {% else %}
+                No File Attached
+                {% endif %}
+              </td>
+              <td>{% if med.monday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.tuesday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.wednesday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.thursday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.friday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.saturday %}✔️{% else %}❌{% endif %}</td>
+              <td>{% if med.sunday %}✔️{% else %}❌{% endif %}</td>
+              <td>
+                <a href="/delete/{{med.id}}" type="button"
+                    class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+            </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-</div>
+  </div>
 
   <script src="/static/script.js"></script>
 </body>
 
 </html>
-

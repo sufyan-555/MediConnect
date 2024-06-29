@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-
+import base64
 
 app=Flask(__name__)
 
@@ -58,6 +58,9 @@ def signup_page():
 @login_required
 def Addmedicine():
     user_medicines = Medicine.query.filter_by(email=current_user.email).all()
+    for medicine in user_medicines:
+        if medicine.image:
+            medicine.image = base64.b64encode(medicine.image).decode('utf-8')
     return render_template("Addmedicine.html",medicines=user_medicines)
 
 @app.route('/park')
@@ -93,6 +96,10 @@ def medicineAdd_page():
         saturday = 'saturday' in request.form
         sunday = 'sunday' in request.form
         img_data = request.files['med_img'].read() if 'med_img' in request.files else None
+        if img_data:
+            print("Fine")
+        else:
+            print("none")
         
         new_med = Medicine(name=name, time=time,chat_id=chat_id, monday=monday, tuesday=tuesday,
                            wednesday=wednesday, thursday=thursday, friday=friday,
@@ -103,6 +110,16 @@ def medicineAdd_page():
         print("Added")
     
     return redirect('/Addmedicine')
+
+
+@app.route('/delete/<int:id>')               
+@login_required
+def delete(id):
+    # Delete camera belonging to the logged-in user
+    med = Medicine.query.filter_by(id=id, email=current_user.email).first()
+    db.session.delete(med)
+    db.session.commit()
+    return redirect("/Addmedicine")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -129,6 +146,7 @@ def dashboard():
 @app.route('/logout')
 @login_required
 def logout():
+    logout_user()
     return render_template("index.html")
 
 if __name__=="__main__":
