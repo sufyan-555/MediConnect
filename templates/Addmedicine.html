@@ -1,0 +1,194 @@
+<!-- Add medicine section tailwind CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Medicine</title>
+    <link rel="icon" href="static/img/manage.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/ec53c9ed31.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6">
+      <!-- Flex container -->
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="pt-2">
+          <a
+            href="#"
+            class="text-4xl bottom-0 capitalize font-bold text-brightRedLight"
+            ><i class="fa-solid fa-grip"></i> Dashboard</a
+          >
+        </div>
+        <!-- Menu -->
+        <div class="hidden space-x-6 md:flex">
+          <a
+            href="/"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Home</a
+          >
+          <a
+            href="#testimonials"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Medicine reminder</a
+          >
+          <a
+            href="/park"
+            class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+            >Parkinson's Test</a
+          >
+          <a
+          href="/park"
+          class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+          >Health Calculators</a
+        >
+         
+          
+          
+        </div>
+
+        <!-- Button -->
+        <a
+          href="/"
+          class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
+        >
+          Log out
+        </a>
+
+        <!-- Hamburger icon -->
+        <button
+          id="menu-btn"
+          class="block hamburger md:hidden focus:outline-none"
+        >
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="md:hidden">
+        <div
+          id="menu"
+          class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+        >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Medicine reminder</a>
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Parkinson's Test</a
+          >
+          <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+            >Health Calculators</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- after navbar part -->
+    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+      <div
+        class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
+      >
+        <!-- left side -->
+        <div class="flex flex-col justify-center p-8 md:p-14">
+          <span class="mb-3 text-3xl font-bold text-darkBlue">Add medicine</span>
+          <span class=" text-darkGrayishBlue mb-5">
+            Let's keep your health as our priority
+          </span>
+          <div class="py-3">
+            <span class="mb-2 text-lg text-darkBlue font-bold">Medicine name</span>
+            <input type="text"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              name="username" id="username" required />
+          </div>
+          <div class="py-3">
+            <span class="mb-2 text-lg text-darkBlue font-bold">Medicine Time:</span>
+            <input type="text"
+              class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              name="username" id="username" required />
+          </div>
+
+          <div class="py-3 mb-2">
+            <span class="mb-6 text-lg text-darkBlue font-bold">Select Days:-</span>
+          <div class="remember">
+           <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" class="font-bold text-darkGrayishBlue" name="monday">Monday</span> 
+          </div>
+          <div class="remember">
+            <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="tuesday">Tuesday</span>
+          </div>
+          <div class="remember">
+          <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="wednesday">Wednesday</span>
+          </div>
+          <div class="remember">
+          <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="thursday">Thursday</span>
+          </div>
+          <div class="remember">
+          <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="friday">Friday</span>
+          </div>
+          <div class="remember">
+          <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="saturday">Saturday</span>
+          </div>
+          <div class="remember">
+          <span class="text-darkGrayishBlue font-semibold"><input type="checkbox" name="sunday">Sunday</span>
+          </div>
+          </div>
+          
+         
+          <button
+            class="w-full bg-brightRed text-white p-2 rounded-lg mb-6 font-bold hover:bg-brightRedLight hover:text-white hover:border hover:border-gray-300"
+          >
+            <a href="#">Add</a>
+          </button>
+          
+          
+        </div>
+      
+        <!-- Right portion -->
+
+
+        <div class="relative">
+          <img
+            src="/static/img/img1.jpg"
+            alt="img"
+            class="w-[650px] h-full hidden rounded-r-2xl md:block object-cover"
+          />
+         
+          <div
+            class="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
+          >
+            <!-- <span class="text-white text-xl"
+              >We've been uesing Untitle to kick"<br />start every new project
+              and can't <br />imagine working without it."
+            </span> -->
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+    <script src="/static/script.js"></script>
+  </body>
+  </html>
+
+
+<!-- 
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+   
+    <link rel="stylesheet" href="./css/main.css" />
+    
+    <title>SignIn</title>
+  </head>
+  <body>
+   -->
