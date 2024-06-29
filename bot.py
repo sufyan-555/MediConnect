@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, MetaData, Table, select,and_
 from datetime import datetime
 import threading
+import base64
 
 load_dotenv()
 
@@ -75,8 +76,17 @@ def send_reminders():
 
         # Send reminder messages
         for row in results:
-            chat_id = row[3]  # Adjust this according to your table structure
-            medicine_name = row[1]  # Adjust this according to your table structure
+            chat_id = row[3]
+            medicine_name = row[1]
+            img_data=row[12]
+
+            if img_data:
+                #img_data=base64.b64encode(img_data).decode('utf-8')
+                try:
+                    bot.send_photo(chat_id=chat_id, photo=img_data)
+                except Exception as e:
+                    print(f"Attempt failed: {e}")
+            
             bot.send_message(chat_id=chat_id, text=f"Reminder: It's time to take your medicine: {medicine_name}")
 
         # Sleep for 60 seconds before checking again
