@@ -2,104 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parkinson's Test</title>
-    <link rel="stylesheet" href="/static/css/main.css" />
-    <script
-    src="https://kit.fontawesome.com/ec53c9ed31.js"
-    crossorigin="anonymous"
-  ></script>
-    <style>
-        canvas {
-            border: 1px solid #000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parkinson's Test</title>
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <script src="https://kit.fontawesome.com/ec53c9ed31.js" crossorigin="anonymous"></script>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="relative container mx-auto p-6">
-        <!-- Flex container -->
-        <div class="flex items-center justify-between">
-          <!-- Logo -->
-          <div class="pt-2">
-            <a
-              href="#"
-              class="text-3xl bottom-0 capitalize font-bold text-brightRedLight"
-              ><i class="fa-solid fa-notes-medical"></i>Parkinson Test</a
-            >
-          </div>
-          <!-- Menu -->
-          <div class="hidden space-x-6 md:flex">
-            <a
-              href="/dashboard"
-              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
-              >Home</a
-            >
-            <a
-              href="/Addmedicine"
-              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
-              >Medicine reminder</a
-            >
-            <a
-              href="/park"
-              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
-              >Parkinson's Test</a
-            >
-            <a
-              href="/calculator"
-              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
-              >Health Calculators</a
-            >
-            
-           
-            
-            
-          </div>
-  
-          <!-- Button -->
-          <a
-            href="/logout"
-            class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
-          >
-            Log out
-          </a>
-  
-          <!-- Hamburger icon -->
-          <button
-            id="menu-btn"
-            class="block hamburger md:hidden focus:outline-none"
-          >
-            <span class="hamburger-top"></span>
-            <span class="hamburger-middle"></span>
-            <span class="hamburger-bottom"></span>
-          </button>
-        </div>
-  
-        <!-- Mobile menu -->
-        <div class="md:hidden">
-          <div
-            id="menu"
-            class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
-          >
-            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
-            
-            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
-              >Medicine Reminder</a
-            >
-            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
-              >Health Calculators</a
-            >
-            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
-              >ChatBot</a
-            >
-          </div>
-        </div>
-      </nav>
-    <div class="flex justify-center pt-2 ">
-        <!-- <img src="img/logo.svg" alt=""> -->
-        <!-- <a
+  <!-- Navbar -->
+  <nav class="relative container mx-auto p-6">
+    <!-- Flex container -->
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="pt-2">
+        <a href="#" class="text-3xl bottom-0 capitalize font-bold text-brightRedLight"><i
+            class="fa-solid fa-notes-medical"></i>Parkinson Test</a>
+      </div>
+      <!-- Menu -->
+      <div class="hidden space-x-6 md:flex">
+        <a href="/dashboard" class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold">Home</a>
+        <a href="/Addmedicine" class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold">Medicine
+          reminder</a>
+        <a href="/park" class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold">Parkinson's Test</a>
+        <a href="/calculator" class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold">Health
+          Calculators</a>
+
+
+
+
+      </div>
+
+      <!-- Button -->
+      <a href="/logout"
+        class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold">
+        Log out
+      </a>
+
+      <!-- Hamburger icon -->
+      <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden">
+      <div id="menu"
+        class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
+        <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
+
+        <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Medicine Reminder</a>
+        <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Health Calculators</a>
+        <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">ChatBot</a>
+      </div>
+    </div>
+  </nav>
+  <div class="flex justify-center pt-2 ">
+    <!-- <img src="img/logo.svg" alt=""> -->
+    <!-- <a
           href="#"
           class="text-4xl bottom-0 capitalize font-bold text-brightRedLight space-x-2"
           ><img
@@ -110,170 +77,182 @@
             class="inline-block"
           />Parkinson's Test</a
         > -->
-      </div>
+  </div>
 
-    <div class="flex items-center justify-center mt-4 bg-gray-100">
-       <!-- <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"> -->
-        <canvas id="myCanvas" width="600" height="600"></canvas>
-        <!-- </div> -->
+  <div class="flex items-center justify-center mt-4 bg-gray-100">
+    <!-- <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"> -->
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+    <!-- </div> -->
+  </div>
+
+  <div class="flex flex-row mx-auto justify-center mt-4 mb-4 space-x-2">
+    <div class="flex justify-center md:justify-start">
+      <a href="/dashboard"
+        class="p-3 px-6 pt-2 mb-3 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left"
+        onclick="checkTrace()">
+        check Trace
+      </a>
     </div>
-       
-    <div class="flex flex-row mx-auto justify-center mt-4 mb-4 space-x-2">
-        <div class="flex justify-center md:justify-start">
-            <a
-              href="#"
-              class="p-3 px-6 pt-2 mb-3 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="checkTrace()"
-            >
-              check Trace
-            </a>
-        </div>
-        <div class="flex justify-center md:justify-start">
-            <a
-              href="#"
-              class="p-3 px-6 pt-2 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="resetCanvas()"
-            >
-              Reset Trace
-            </a>
-        </div>
+    <div class="flex justify-center md:justify-start">
+      <a href=""
+        class="p-3 px-6 pt-2 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left"
+        onclick="resetCanvas()">
+        Reset Trace
+      </a>
     </div>
-    
-    <!-- <button onclick="checkTrace()">Check Trace</button>
+  </div>
+
+  <div class="flex items-center justify-center ">
+    {% if result %}
+  <h1 class=" text-2xl font-semibold text-darkGrayishBlue ">{{result}}</h1>
+  {% endif %}
+  </div>
+
+  <div class="flex items-center justify-center mt-4 bg-gray-100">
+    {% if plot_url %}
+    <img src="data:image/png;base64, {{ plot_url }}" alt="Pram Plot" width="800" height="600">
+    {% else %}
+    <p>No data available.</p>
+    {% endif %}
+  </div>
+
+  <!-- <button onclick="checkTrace()">Check Trace</button>
     <button onclick="resetCanvas()">Reset Trace</button> -->
 
-    <script>
-        var canvas = document.getElementById('myCanvas');
-        var ctx = canvas.getContext('2d');
-        var drawing = false;
-        var userPath = [];
-        var tolerance = 500; // Tolerance for path comparison (adjust as needed)
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+    var drawing = false;
+    var userPath = [];
+    var tolerance = 500; // Tolerance for path comparison (adjust as needed)
 
-        var x0 = getRandomInt(50, 500);
-        var y0 = getRandomInt(100, 500);
-        var x1 = getRandomInt(200, 500);
-        var y1 = getRandomInt(200, 300);
-        var x2 = getRandomInt(350, 500);
-        var y2 = getRandomInt(50, 500);
-        var x3 = getRandomInt(350, 500);
-        var y3 = getRandomInt(50, 500);
+    var x0 = getRandomInt(50, 500);
+    var y0 = getRandomInt(100, 500);
+    var x1 = getRandomInt(200, 500);
+    var y1 = getRandomInt(200, 300);
+    var x2 = getRandomInt(350, 500);
+    var y2 = getRandomInt(50, 500);
+    var x3 = getRandomInt(350, 500);
+    var y3 = getRandomInt(50, 500);
 
-        // Function to draw a random smooth curve
-        function drawPreDrawnCurve() {
-            // Clear previous drawing
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Function to draw a random smooth curve
+    function drawPreDrawnCurve() {
+      // Clear previous drawing
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Generate random control points for Bezier curve
-            // Draw the curve
-            ctx.beginPath();
-            ctx.moveTo(x0, y0);
-            ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3); // Adjust last point as needed
-            ctx.stroke();
-        }
-
-        // Function to reset canvas
-        function resetCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            userPath = [];
-            drawPreDrawnCurve();
-        }
-
-        // Function to handle mouse down event
-        canvas.addEventListener('mousedown', function (event) {
-            drawing = true;
-            userPath.push({ x: event.offsetX, y: event.offsetY });
-        });
-
-        // Function to handle mouse move event
-        canvas.addEventListener('mousemove', function (event) {
-            if (drawing) {
-                userPath.push({ x: event.offsetX, y: event.offsetY });
-                redrawPath();
-            }
-        });
-
-        // Function to handle mouse up event
-        canvas.addEventListener('mouseup', function () {
-            drawing = false;
-        });
-
-        // Function to redraw user's traced path
-        function redrawPath() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.beginPath();
-            drawPreDrawnCurve();
-            ctx.moveTo(userPath[0].x, userPath[0].y);
-            for (var i = 1; i < userPath.length; i++) {
-                ctx.lineTo(userPath[i].x, userPath[i].y);
-            }
-            ctx.stroke();
-        }
-
-        function calculateHausdorffDistance(path1, path2) {
-            var maxDistance = 0;
-            for (var i = 0; i < path1.length; i++) {
-                var minDistance = Infinity;
-                for (var j = 0; j < path2.length; j++) {
-                    var distance = Math.sqrt(Math.pow(path1[i].x - path2[j].x, 2) + Math.pow(path1[i].y - path2[j].y, 2));
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                    }
-                }
-                if (minDistance > maxDistance) {
-                    maxDistance = minDistance;
-                }
-            }
-            return maxDistance;
-        }
-
-        function calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, numPoints) {
-            var points = [];
-            for (var i = 0; i <= numPoints; i++) {
-                var t = i / numPoints;
-                var x = Math.pow(1 - t, 3) * x0 + 3 * Math.pow(1 - t, 2) * t * x1 + 3 * (1 - t) * Math.pow(t, 2) * x2 + Math.pow(t, 3) * x3;
-                var y = Math.pow(1 - t, 3) * y0 + 3 * Math.pow(1 - t, 2) * t * y1 + 3 * (1 - t) * Math.pow(t, 2) * y2 + Math.pow(t, 3) * y3;
-                points.push({ x: x, y: y });
-            }
-            return points;
-        }
-
-        // Function to check the traced path against the pre-drawn path
-        function checkTrace() {
-    preDrawnPath = calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, userPath.length);
-    var distance1 = calculateHausdorffDistance(userPath, preDrawnPath);
-    var distance2 = calculateHausdorffDistance(preDrawnPath, userPath);
-
-    // Check if distance is within tolerance
-    if (distance1 <= tolerance && distance2 <= tolerance) {
-        alert("Congratulations! Your trace matches the actual curve.");
-    } else {
-        alert("Your trace does not match the actual curve. Please try again.");
+      // Generate random control points for Bezier curve
+      // Draw the curve
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3); // Adjust last point as needed
+      ctx.stroke();
     }
 
-    // Send distances to the backend
-    fetch('http://127.0.0.1:5000/submit_distances', {
+    // Function to reset canvas
+    function resetCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      userPath = [];
+      drawPreDrawnCurve();
+    }
+
+    // Function to handle mouse down event
+    canvas.addEventListener('mousedown', function (event) {
+      drawing = true;
+      userPath.push({ x: event.offsetX, y: event.offsetY });
+    });
+
+    // Function to handle mouse move event
+    canvas.addEventListener('mousemove', function (event) {
+      if (drawing) {
+        userPath.push({ x: event.offsetX, y: event.offsetY });
+        redrawPath();
+      }
+    });
+
+    // Function to handle mouse up event
+    canvas.addEventListener('mouseup', function () {
+      drawing = false;
+    });
+
+    // Function to redraw user's traced path
+    function redrawPath() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      drawPreDrawnCurve();
+      ctx.moveTo(userPath[0].x, userPath[0].y);
+      for (var i = 1; i < userPath.length; i++) {
+        ctx.lineTo(userPath[i].x, userPath[i].y);
+      }
+      ctx.stroke();
+    }
+
+    function calculateHausdorffDistance(path1, path2) {
+      var maxDistance = 0;
+      for (var i = 0; i < path1.length; i++) {
+        var minDistance = Infinity;
+        for (var j = 0; j < path2.length; j++) {
+          var distance = Math.sqrt(Math.pow(path1[i].x - path2[j].x, 2) + Math.pow(path1[i].y - path2[j].y, 2));
+          if (distance < minDistance) {
+            minDistance = distance;
+          }
+        }
+        if (minDistance > maxDistance) {
+          maxDistance = minDistance;
+        }
+      }
+      return maxDistance;
+    }
+
+    function calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, numPoints) {
+      var points = [];
+      for (var i = 0; i <= numPoints; i++) {
+        var t = i / numPoints;
+        var x = Math.pow(1 - t, 3) * x0 + 3 * Math.pow(1 - t, 2) * t * x1 + 3 * (1 - t) * Math.pow(t, 2) * x2 + Math.pow(t, 3) * x3;
+        var y = Math.pow(1 - t, 3) * y0 + 3 * Math.pow(1 - t, 2) * t * y1 + 3 * (1 - t) * Math.pow(t, 2) * y2 + Math.pow(t, 3) * y3;
+        points.push({ x: x, y: y });
+      }
+      return points;
+    }
+
+    // Function to check the traced path against the pre-drawn path
+    function checkTrace() {
+      preDrawnPath = calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, userPath.length);
+      var distance1 = calculateHausdorffDistance(userPath, preDrawnPath);
+      var distance2 = calculateHausdorffDistance(preDrawnPath, userPath);
+
+      // Check if distance is within tolerance
+      if (distance1 <= tolerance && distance2 <= tolerance) {
+        alert("Congratulations! Your trace has been recorded. Redirecting to homepage.");
+      } else {
+        alert("You trace is too off to be recorded!! try again.");
+      }
+
+      // Send distances to the backend
+      fetch('http://127.0.0.1:5000/submit_distances', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({ distance1: distance1, distance2: distance2 })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
             console.log('Distances successfully sent to the backend.');
-        }
-    })
-    .catch(error => console.error('Error:', error));
-}
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
 
 
-        // Function to get a random integer within a range
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
+    // Function to get a random integer within a range
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-        // Call the drawPreDrawnCurve function when the page loads
-        drawPreDrawnCurve();
-    </script>
+    // Call the drawPreDrawnCurve function when the page loads
+    drawPreDrawnCurve();
+  </script>
 
 </body>
 

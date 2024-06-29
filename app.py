@@ -4,13 +4,20 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import base64
+from datetime import datetime as dt
+import matplotlib
+matplotlib.use('Agg')  # Set the backend to 'Agg'
+import matplotlib.pyplot as plt
+from io import BytesIO
+import numpy as np
 
 app=Flask(__name__)
 CORS(app)
 
 app.config['SECRET_KEY'] = 'H4B'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config["SQLALCHEMY_BINDS"]={"medicine":"sqlite:///meds.db"}
+app.config["SQLALCHEMY_BINDS"]={"medicine":"sqlite:///meds.db",
+                                "park":"sqlite:///parks.db"}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -38,6 +45,15 @@ class Medicine(db.Model):
     sunday = db.Column(db.Boolean, default=False)
     email = db.Column(db.String(80), nullable=False)
     image=db.Column(db.LargeBinary)
+
+class Park(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(5), nullable=False)
+    val1 = db.Column(db.Integer, nullable=False)
+    val2 = db.Column(db.Integer, nullable=False)
+    pram = db.Column(db.Integer, nullable=False)
+    email = db.Column(db.String(80), nullable=False)
+
 
 
 
@@ -68,9 +84,46 @@ def Addmedicine():
             medicine.image = base64.b64encode(medicine.image).decode('utf-8')
     return render_template("Addmedicine.html",medicines=user_medicines)
 
+
+def generate_plot(ids, pram_values):
+    plt.figure(figsize=(10, 6))
+    plt.plot(ids, pram_values, marker='o', linestyle='-', color='b', label='Pram Values')
+    plt.xlabel('ID')
+    plt.ylabel('Pram')
+    plt.title('Last 100 Values of Pram')
+    plt.grid(True)
+    plt.legend()
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plot_url = base64.b64encode(img.getvalue()).decode()
+
+    plt.close()
+
+    return plot_url
+
 @app.route('/park')
 def park():
-    return render_template("park.html")
+    park_entries = Park.query.filter_by(email=current_user.email).order_by(Park.id.desc()).limit(100).all()
+    ids = [entry.id for entry in park_entries]
+    pram_values = [entry.pram for entry in park_entries]
+    plot_url = generate_plot(ids, pram_values)
+
+    if len(pram_values) > 60:
+        diff = np.diff(pram_values)
+        avg_diff = np.mean(diff)
+        
+        if avg_diff < 0:
+            trend_comment = "The parameter shows an increasing trend. You should take a medical checkup"
+        elif avg_diff > 0:
+            trend_comment = "The parameter shows a decreasing trend. You are good to go :)"
+        else:
+            trend_comment = "The parameter shows no clear trend."
+    else:
+        trend_comment=None
+    print(trend_comment)
+    return render_template("park.html", plot_url=plot_url,result=trend_comment)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -120,7 +173,6 @@ def medicineAdd_page():
 @app.route('/delete/<int:id>')               
 @login_required
 def delete(id):
-    # Delete camera belonging to the logged-in user
     med = Medicine.query.filter_by(id=id, email=current_user.email).first()
     db.session.delete(med)
     db.session.commit()
@@ -161,13 +213,18 @@ def submit_distances():
     distance2 = data.get('distance2')
     print(f"Distance 1: {distance1}")
     print(f"Distance 2: {distance2}")
-    # Do something with the distances here
-    return jsonify(success=True)
 
+    new_entry = Park(date=dt.now().date().isoformat(),
+                val1=float(distance1),
+                val2=float(distance2),
+                pram=float(((float(distance1)-float(distance2))**2)**0.5),
+                email=current_user.email)
 
- 
- 
+    
+    db.session.add(new_entry)
+    db.session.commit()
 
+    return redirect("/dashboard")
 
 
 @app.route('/calculator')

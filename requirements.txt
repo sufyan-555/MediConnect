@@ -9,3 +9,5 @@ pypdf
 chromadb
 duckduckgo-search
 flask-cors
+matplotlib
+numpy
