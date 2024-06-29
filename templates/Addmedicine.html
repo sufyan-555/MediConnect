@@ -75,7 +75,7 @@
         <span class=" text-darkGrayishBlue mb-5">
           Let's keep your health as our priority
         </span>
-        <form action="/add_med" method="POST">
+        <form action="/add_med" method="POST" enctype="multipart/form-data">
           <div class="py-3">
             <span class="mb-2 text-lg text-darkBlue font-bold">Medicine name</span>
             <input type="text"
@@ -181,7 +181,7 @@
               <td>{{ med.time }}</td>
               <td>{{ med.chat_id }}</td>
               <td>{% if med.image %}
-                <img src="data:image/jpeg;base64,{{ med.image }}" class="img-fluid img-thumbnail"
+                <img src="data:image/jpeg;base64,{{ med.image }}" class=" img-thumbnail" height="100px" width="100px"
                   alt="Complaint File">
                 {% else %}
                 No File Attached
