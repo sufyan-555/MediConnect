@@ -50,6 +50,14 @@ def login_page():
 def signup_page():
     return render_template("signup.html")
 
+@app.route('/Addmedicine')
+def Addmedicine():
+    return render_template("Addmedicine.html")
+
+@app.route('/park')
+def park():
+    return render_template("park.html")
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     username = request.form['username']
