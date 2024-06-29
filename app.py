@@ -5,6 +5,7 @@ app=Flask(__name__)
 
 app.config['SECRET_KEY'] = 'H4B'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config["SQLALCHEMY_BINDS"]={"complain":"sqlite:///meds.db"}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -16,6 +17,21 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
+
+class Medicine(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    time = db.Column(db.String(5), nullable=False)
+    chat_id = db.Column(db.String(100), nullable=False)
+    monday = db.Column(db.Boolean, default=False)
+    tuesday = db.Column(db.Boolean, default=False)
+    wednesday = db.Column(db.Boolean, default=False)
+    thursday = db.Column(db.Boolean, default=False)
+    friday = db.Column(db.Boolean, default=False)
+    saturday = db.Column(db.Boolean, default=False)
+    sunday = db.Column(db.Boolean, default=False)
+    image=db.Column(db.LargeBinary)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -67,7 +83,6 @@ def login():
 @login_required
 def dashboard():
     return render_template("dash.html",current_user=current_user)
-
 
 @app.route('/logout')
 @login_required
