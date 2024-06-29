@@ -22,6 +22,8 @@ bot_api=os.getenv("bot_api")
 bot=telebot.TeleBot(token=bot_api)
 
 
+
+
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
 
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=GOOGLE_API_KEY)
