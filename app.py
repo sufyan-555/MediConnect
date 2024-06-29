@@ -1,16 +1,26 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
+import telebot
+import os
+from dotenv import load_doten
+
 app=Flask(__name__)
 
 app.config['SECRET_KEY'] = 'H4B'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config["SQLALCHEMY_BINDS"]={"complain":"sqlite:///meds.db"}
+app.config["SQLALCHEMY_BINDS"]={"medicine":"sqlite:///meds.db"}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+
+
+bot_api = os.getenv("bot_api")
+bot = telebot.TeleBot(token=bot_api)
+
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -51,6 +61,7 @@ def signup_page():
     return render_template("signup.html")
 
 @app.route('/Addmedicine')
+@login_required
 def Addmedicine():
     return render_template("Addmedicine.html")
 
@@ -73,6 +84,7 @@ def signup():
 
 
 @app.route('/add_med', methods=['GET', 'POST'])
+@login_required
 def medicineAdd_page():
     if request.method == 'POST':
         name = request.form['medicine_name']
