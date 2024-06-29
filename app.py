@@ -22,7 +22,7 @@ class Medicine(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     time = db.Column(db.String(5), nullable=False)
-    chat_id = db.Column(db.String(100), nullable=False)
+    chat_id = db.Column(db.Integer, nullable=False)
     monday = db.Column(db.Boolean, default=False)
     tuesday = db.Column(db.Boolean, default=False)
     wednesday = db.Column(db.Boolean, default=False)
@@ -70,6 +70,34 @@ def signup():
     db.session.add(new_user)
     db.session.commit()
     return redirect('/login_page')
+
+
+@app.route('/add_med', methods=['GET', 'POST'])
+def medicineAdd_page():
+    if request.method == 'POST':
+        name = request.form['medicine_name']
+        time = request.form['medicine_time']
+        chat_id=request.form['chat_id']
+        monday = 'monday' in request.form
+        tuesday = 'tuesday' in request.form
+        wednesday = 'wednesday' in request.form
+        thursday = 'thursday' in request.form
+        friday = 'friday' in request.form
+        saturday = 'saturday' in request.form
+        sunday = 'sunday' in request.form
+        img_data = request.files['med_img'].read() if 'med_img' in request.files else None
+        
+        new_med = Medicine(name=name, time=time,chat_id=chat_id, monday=monday, tuesday=tuesday,
+                           wednesday=wednesday, thursday=thursday, friday=friday,
+                           saturday=saturday, sunday=sunday,image=img_data)
+        
+        db.session.add(new_med)
+        db.session.commit()
+        print("Added")
+        return redirect('/Addmedicine')
+    
+    return redirect('/Addmedicine')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
