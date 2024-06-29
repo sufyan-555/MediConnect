@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkinson's Test</title>
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <script
+      src="https://kit.fontawesome.com/ec53c9ed31.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    <div class="flex justify-center pt-2 ">
+        <!-- <img src="img/logo.svg" alt=""> -->
+        <a
+          href="#"
+          class="text-4xl bottom-0 capitalize font-bold text-brightRedLight space-x-2"
+          ><img
+            src="/static/img/park.png"
+            height="34px"
+            width="34px"
+            alt=""
+            class="inline-block"
+          />Parkinson's Test</a
+        >
+      </div>
+
+    <div class="flex items-center justify-center mt-4 bg-gray-100">
+       <!-- <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"> -->
+        <canvas id="myCanvas" width="600" height="600"></canvas>
+        <!-- </div> -->
+    </div>
+       
+    <div class="flex flex-row mx-auto justify-center overflow-y-hidden mt-4 mb-4 space-x-2">
+        <div class="flex justify-center md:justify-start">
+            <a
+              href="#"
+              class="p-3 px-6 pt-2 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="checkTrace()"
+            >
+              check Trace
+            </a>
+        </div>
+        <div class="flex justify-center md:justify-start">
+            <a
+              href="#"
+              class="p-3 px-6 pt-2 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="resetCanvas()"
+            >
+              Reset Trace
+            </a>
+        </div>
+    </div>
+    
+
+    <!-- <button onclick="checkTrace()">Check Trace</button> -->
+    <!-- <button onclick="resetCanvas()">Reset Trace</button> -->
+   
+    
+
+
+
+
+
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        var drawing = false;
+        var userPath = [];
+        var tolerance = 500; // Tolerance for path comparison (adjust as needed)
+
+        // Function to draw the pre-drawn curve (replace with your specific curve drawing logic)
+        function drawPreDrawnCurve() {
+            // Example: drawing a simple curve
+            ctx.beginPath();
+            ctx.moveTo(50, 50);
+            ctx.quadraticCurveTo(100, 250, 450, 100);
+            ctx.stroke();
+        }
+
+        // Function to reset canvas
+        function resetCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            userPath = [];
+            drawPreDrawnCurve();
+        }
+
+        // Function to handle mouse down event
+        canvas.addEventListener('mousedown', function(event) {
+            drawing = true;
+            userPath.push({ x: event.offsetX, y: event.offsetY });
+        });
+
+        // Function to handle mouse move event
+        canvas.addEventListener('mousemove', function(event) {
+            if (drawing) {
+                userPath.push({ x: event.offsetX, y: event.offsetY });
+                redrawPath();
+            }
+        });
+
+        // Function to handle mouse up event
+        canvas.addEventListener('mouseup', function() {
+            drawing = false;
+        });
+
+        // Function to redraw user's traced path
+        function redrawPath() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPreDrawnCurve();
+            ctx.beginPath();
+            ctx.moveTo(userPath[0].x, userPath[0].y);
+            for (var i = 1; i < userPath.length; i++) {
+                ctx.lineTo(userPath[i].x, userPath[i].y);
+            }
+            ctx.stroke();
+        }
+
+        function calculateHausdorffDistance(path1, path2) {
+            var maxDistance = 0;
+            for (var i = 0; i < path1.length; i++) {
+                var minDistance = Infinity;
+                for (var j = 0; j < path2.length; j++) {
+                    var distance = Math.sqrt(Math.pow(path1[i].x - path2[j].x, 2) + Math.pow(path1[i].y - path2[j].y, 2));
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                    }
+                }
+                if (minDistance > maxDistance) {
+                    maxDistance = minDistance;
+                }
+            }
+            return maxDistance;
+        }
+
+        // Function to check the traced path against the pre-drawn path
+        function checkTrace() {
+            // Example: define pre-drawn path coordinates (adjust as needed)
+            var preDrawnPath = [{ x: 50, y: 50 }, { x: 100, y: 100 }, { x: 200, y: 50 }];
+
+            // Calculate Hausdorff distance between userPath and preDrawnPath
+            var distance1 = calculateHausdorffDistance(userPath, preDrawnPath);
+            var distance2 = calculateHausdorffDistance(preDrawnPath, userPath);
+
+            // Check if distance is within tolerance
+            if (distance1 <= tolerance && distance2 <= tolerance) {
+                alert("Congratulations! Your trace matches the actual curve.");
+            } else {
+                alert("Your trace does not match the actual curve. Please try again.");
+            }
+        }
+
+        // Call the drawPreDrawnCurve function when the page loads
+        drawPreDrawnCurve();
+    </script>
+    
+</body>
+</html>
