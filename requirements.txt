@@ -3,4 +3,8 @@ python-dotenv
 flask
 Flask-SQLAlchemy
 flask-login
-sqlalchemy
+langchain-google-genai
+langchain-community
+pypdf
+chromadb
+duckduckgo-search
