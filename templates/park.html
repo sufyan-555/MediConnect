@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parkinson's Test</title>
     <link rel="stylesheet" href="/static/css/main.css" />
     <script
-      src="https://kit.fontawesome.com/ec53c9ed31.js"
-      crossorigin="anonymous"
-    ></script>
-
+    src="https://kit.fontawesome.com/ec53c9ed31.js"
+    crossorigin="anonymous"
+  ></script>
     <style>
         canvas {
             border: 1px solid #000;
         }
-        
     </style>
 </head>
-
 
 <body>
     <div class="flex justify-center pt-2 ">
@@ -60,15 +58,8 @@
         </div>
     </div>
     
-
-    <!-- <button onclick="checkTrace()">Check Trace</button> -->
-    <!-- <button onclick="resetCanvas()">Reset Trace</button> -->
-   
-    
-
-
-
-
+    <!-- <button onclick="checkTrace()">Check Trace</button>
+    <button onclick="resetCanvas()">Reset Trace</button> -->
 
     <script>
         var canvas = document.getElementById('myCanvas');
@@ -77,12 +68,25 @@
         var userPath = [];
         var tolerance = 500; // Tolerance for path comparison (adjust as needed)
 
-        // Function to draw the pre-drawn curve (replace with your specific curve drawing logic)
+        var x0 = getRandomInt(50, 500);
+        var y0 = getRandomInt(100, 500);
+        var x1 = getRandomInt(200, 500);
+        var y1 = getRandomInt(200, 300);
+        var x2 = getRandomInt(350, 500);
+        var y2 = getRandomInt(50, 500);
+        var x3 = getRandomInt(350, 500);
+        var y3 = getRandomInt(50, 500);
+
+        // Function to draw a random smooth curve
         function drawPreDrawnCurve() {
-            // Example: drawing a simple curve
+            // Clear previous drawing
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Generate random control points for Bezier curve
+            // Draw the curve
             ctx.beginPath();
-            ctx.moveTo(50, 50);
-            ctx.quadraticCurveTo(100, 250, 450, 100);
+            ctx.moveTo(x0, y0);
+            ctx.bezierCurveTo(x1, y1, x2, y2, x3, y3); // Adjust last point as needed
             ctx.stroke();
         }
 
@@ -94,13 +98,13 @@
         }
 
         // Function to handle mouse down event
-        canvas.addEventListener('mousedown', function(event) {
+        canvas.addEventListener('mousedown', function (event) {
             drawing = true;
             userPath.push({ x: event.offsetX, y: event.offsetY });
         });
 
         // Function to handle mouse move event
-        canvas.addEventListener('mousemove', function(event) {
+        canvas.addEventListener('mousemove', function (event) {
             if (drawing) {
                 userPath.push({ x: event.offsetX, y: event.offsetY });
                 redrawPath();
@@ -108,15 +112,15 @@
         });
 
         // Function to handle mouse up event
-        canvas.addEventListener('mouseup', function() {
+        canvas.addEventListener('mouseup', function () {
             drawing = false;
         });
 
         // Function to redraw user's traced path
         function redrawPath() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawPreDrawnCurve();
             ctx.beginPath();
+            drawPreDrawnCurve();
             ctx.moveTo(userPath[0].x, userPath[0].y);
             for (var i = 1; i < userPath.length; i++) {
                 ctx.lineTo(userPath[i].x, userPath[i].y);
@@ -141,26 +145,57 @@
             return maxDistance;
         }
 
+        function calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, numPoints) {
+            var points = [];
+            for (var i = 0; i <= numPoints; i++) {
+                var t = i / numPoints;
+                var x = Math.pow(1 - t, 3) * x0 + 3 * Math.pow(1 - t, 2) * t * x1 + 3 * (1 - t) * Math.pow(t, 2) * x2 + Math.pow(t, 3) * x3;
+                var y = Math.pow(1 - t, 3) * y0 + 3 * Math.pow(1 - t, 2) * t * y1 + 3 * (1 - t) * Math.pow(t, 2) * y2 + Math.pow(t, 3) * y3;
+                points.push({ x: x, y: y });
+            }
+            return points;
+        }
+
         // Function to check the traced path against the pre-drawn path
         function checkTrace() {
-            // Example: define pre-drawn path coordinates (adjust as needed)
-            var preDrawnPath = [{ x: 50, y: 50 }, { x: 100, y: 100 }, { x: 200, y: 50 }];
+    preDrawnPath = calculateBezierPath(x0, y0, x1, y1, x2, y2, x3, y3, userPath.length);
+    var distance1 = calculateHausdorffDistance(userPath, preDrawnPath);
+    var distance2 = calculateHausdorffDistance(preDrawnPath, userPath);
 
-            // Calculate Hausdorff distance between userPath and preDrawnPath
-            var distance1 = calculateHausdorffDistance(userPath, preDrawnPath);
-            var distance2 = calculateHausdorffDistance(preDrawnPath, userPath);
+    // Check if distance is within tolerance
+    if (distance1 <= tolerance && distance2 <= tolerance) {
+        alert("Congratulations! Your trace matches the actual curve.");
+    } else {
+        alert("Your trace does not match the actual curve. Please try again.");
+    }
 
-            // Check if distance is within tolerance
-            if (distance1 <= tolerance && distance2 <= tolerance) {
-                alert("Congratulations! Your trace matches the actual curve.");
-            } else {
-                alert("Your trace does not match the actual curve. Please try again.");
-            }
+    // Send distances to the backend
+    fetch('http://127.0.0.1:5000/submit_distances', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ distance1: distance1, distance2: distance2 })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('Distances successfully sent to the backend.');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+        // Function to get a random integer within a range
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
         // Call the drawPreDrawnCurve function when the page loads
         drawPreDrawnCurve();
     </script>
-    
+
 </body>
+
 </html>

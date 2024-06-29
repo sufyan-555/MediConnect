@@ -8,3 +8,4 @@ langchain-community
 pypdf
 chromadb
 duckduckgo-search
+flask-cors

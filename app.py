@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, session, redirect, url_for
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 app=Flask(__name__)
+CORS(app)
 
 app.config['SECRET_KEY'] = 'H4B'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -124,6 +127,21 @@ def dashboard():
 @login_required
 def logout():
     return render_template("index.html")
+
+@app.route('/submit_distances', methods=['POST'])
+def submit_distances():
+    data = request.json
+    distance1 = data.get('distance1')
+    distance2 = data.get('distance2')
+    print(f"Distance 1: {distance1}")
+    print(f"Distance 2: {distance2}")
+    # Do something with the distances here
+    return jsonify(success=True)
+ 
+ 
+
+
+
 
 if __name__=="__main__":
     app.run(debug=True)
