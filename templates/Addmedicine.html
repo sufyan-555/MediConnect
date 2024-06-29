@@ -83,17 +83,21 @@
               name="medicine_name" id="medicine_name" required />
           </div>
           <div class="py-3">
-            <span class="mb-2 text-lg text-darkBlue font-bold">Medicine Time:</span>
-            <input type="text"
+            <span class="mb-2 text-lg text-darkBlue font-bold placeholder:'" >Medicine Time:</span>
+            <input type="text" placeholder="Enter in hh:mm Format only"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="medicine_time" id="medicine_time" required />
           </div>
           <div class="py-3">
-            <span class="mb-2 text-lg text-darkBlue font-bold">Telegram ChatId</span>
+            <span class="mb-2 text-lg text-darkBlue font-bold">Telegram ChatId  
+              <i class="fa-solid fa-circle-question" id="tooltip-icon"></i>
+            </span>
             <input type="text"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="chat_id" id="chat_id" required />
           </div>
+          
+          
           <div class="py-3">
             <span class="mb-2 text-lg text-darkBlue font-bold">Upload image</span>
             <input
@@ -206,7 +210,20 @@
     </div>
   </div>
 
+ 
   <script src="/static/script.js"></script>
+  <script src="/static/script.js"></script>
+  
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const icon = document.getElementById('tooltip-icon');
 
+    // Function to handle click event
+    icon.addEventListener('click', function() {
+      alert('To get chat id, got to t.me/Medi_Connect_Bot and type "/get_my_id" ');
+    });
+  });
+</script>
+ 
 </html>

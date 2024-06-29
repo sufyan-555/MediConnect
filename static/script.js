@@ -25,3 +25,4 @@ dtElements.forEach(element=>{
         ddArrowIcon.classList.toggle('-rotate-180');
     })
 })
+
