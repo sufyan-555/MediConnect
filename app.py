@@ -3,17 +3,20 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+
+
 app=Flask(__name__)
 CORS(app)
 
 app.config['SECRET_KEY'] = 'H4B'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-app.config["SQLALCHEMY_BINDS"]={"complain":"sqlite:///meds.db"}
+app.config["SQLALCHEMY_BINDS"]={"medicine":"sqlite:///meds.db"}
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
+
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -33,6 +36,7 @@ class Medicine(db.Model):
     friday = db.Column(db.Boolean, default=False)
     saturday = db.Column(db.Boolean, default=False)
     sunday = db.Column(db.Boolean, default=False)
+    email = db.Column(db.String(80), nullable=False)
     image=db.Column(db.LargeBinary)
 
 
@@ -54,8 +58,10 @@ def signup_page():
     return render_template("signup.html")
 
 @app.route('/Addmedicine')
+@login_required
 def Addmedicine():
-    return render_template("Addmedicine.html")
+    user_medicines = Medicine.query.filter_by(email=current_user.email).all()
+    return render_template("Addmedicine.html",medicines=user_medicines)
 
 @app.route('/park')
 def park():
@@ -76,6 +82,7 @@ def signup():
 
 
 @app.route('/add_med', methods=['GET', 'POST'])
+@login_required
 def medicineAdd_page():
     if request.method == 'POST':
         name = request.form['medicine_name']
@@ -92,12 +99,11 @@ def medicineAdd_page():
         
         new_med = Medicine(name=name, time=time,chat_id=chat_id, monday=monday, tuesday=tuesday,
                            wednesday=wednesday, thursday=thursday, friday=friday,
-                           saturday=saturday, sunday=sunday,image=img_data)
+                           saturday=saturday, sunday=sunday,image=img_data,email=current_user.email)
         
         db.session.add(new_med)
         db.session.commit()
         print("Added")
-        return redirect('/Addmedicine')
     
     return redirect('/Addmedicine')
 
