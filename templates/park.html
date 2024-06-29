@@ -18,9 +18,88 @@
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="relative container mx-auto p-6">
+        <!-- Flex container -->
+        <div class="flex items-center justify-between">
+          <!-- Logo -->
+          <div class="pt-2">
+            <a
+              href="#"
+              class="text-3xl bottom-0 capitalize font-bold text-brightRedLight"
+              ><i class="fa-solid fa-notes-medical"></i>Parkinson Test</a
+            >
+          </div>
+          <!-- Menu -->
+          <div class="hidden space-x-6 md:flex">
+            <a
+              href="/dashboard"
+              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+              >Home</a
+            >
+            <a
+              href="/Addmedicine"
+              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+              >Medicine reminder</a
+            >
+            <a
+              href="/park"
+              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+              >Parkinson's Test</a
+            >
+            <a
+              href="/calculator"
+              class="hover:text-darkGrayishBlue text-darkBlue text-xl font-semibold"
+              >Health Calculators</a
+            >
+            
+           
+            
+            
+          </div>
+  
+          <!-- Button -->
+          <a
+            href="/logout"
+            class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
+          >
+            Log out
+          </a>
+  
+          <!-- Hamburger icon -->
+          <button
+            id="menu-btn"
+            class="block hamburger md:hidden focus:outline-none"
+          >
+            <span class="hamburger-top"></span>
+            <span class="hamburger-middle"></span>
+            <span class="hamburger-bottom"></span>
+          </button>
+        </div>
+  
+        <!-- Mobile menu -->
+        <div class="md:hidden">
+          <div
+            id="menu"
+            class="absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
+          >
+            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue">Home</a>
+            
+            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+              >Medicine Reminder</a
+            >
+            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+              >Health Calculators</a
+            >
+            <a href="#" class="hover:text-darkGrayishBlue text-darkBlue"
+              >ChatBot</a
+            >
+          </div>
+        </div>
+      </nav>
     <div class="flex justify-center pt-2 ">
         <!-- <img src="img/logo.svg" alt=""> -->
-        <a
+        <!-- <a
           href="#"
           class="text-4xl bottom-0 capitalize font-bold text-brightRedLight space-x-2"
           ><img
@@ -30,7 +109,7 @@
             alt=""
             class="inline-block"
           />Parkinson's Test</a
-        >
+        > -->
       </div>
 
     <div class="flex items-center justify-center mt-4 bg-gray-100">
@@ -39,11 +118,11 @@
         <!-- </div> -->
     </div>
        
-    <div class="flex flex-row mx-auto justify-center overflow-y-hidden mt-4 mb-4 space-x-2">
+    <div class="flex flex-row mx-auto justify-center mt-4 mb-4 space-x-2">
         <div class="flex justify-center md:justify-start">
             <a
               href="#"
-              class="p-3 px-6 pt-2 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="checkTrace()"
+              class="p-3 px-6 pt-2 mb-3 text-white bg-brightRed  rounded-full baseline hover:bg-brightRedLight font-bold mx-left" onclick="checkTrace()"
             >
               check Trace
             </a>

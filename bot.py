@@ -44,7 +44,7 @@ model = ChatGoogleGenerativeAI(model="gemini-pro")
 agent=initialize_agent(
     llm=model,
     tools=[search,rag_tool],
-    verbose=True,
+    verbose=False,
     handle_parsing_errors=True
 )
 
