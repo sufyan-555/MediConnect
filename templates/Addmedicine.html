@@ -170,6 +170,7 @@
                         <th scope="col">Fri</th>
                         <th scope="col">Sat</th>
                         <th scope="col">Sun</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -186,6 +187,9 @@
                       <td>{% if med.friday %}✔️{% else %}❌{% endif %}</td>
                       <td>{% if med.saturday %}✔️{% else %}❌{% endif %}</td>
                       <td>{% if med.sunday %}✔️{% else %}❌{% endif %}</td>
+                      <!-- <td>
+                        <a href="/delete_medicine/{{med.id}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button>
+                    </td> -->
                   </tr>
                   {% endfor %}
               </tbody>

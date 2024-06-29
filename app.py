@@ -143,6 +143,8 @@ def submit_distances():
     print(f"Distance 2: {distance2}")
     # Do something with the distances here
     return jsonify(success=True)
+
+
  
  
 
