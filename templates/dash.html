@@ -56,7 +56,7 @@
 
         <!-- Button -->
         <a
-          href="/"
+          href="/logout"
           class="hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight font-bold"
         >
           Log out
@@ -105,7 +105,7 @@
             <h1
               class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left text-darkBlue"
             >
-              Welcome To our Web application, MediConnect
+              Welcome {{current_user.username}}
             </h1>
             <p
               class="max-w-sm text-center text-darkGrayishBlue text-xl font-semibold md:text-left"
