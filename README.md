@@ -23,7 +23,7 @@ Get instant medical advice and support with our 24/7 Medical Chatbot. Whether yo
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/your_username/rag-application.git
+    git clone https://github.com/sufyan-555/MediConnect.git
     cd rag-application
     ```
 
