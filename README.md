@@ -32,10 +32,6 @@ Get instant medical advice and support with our 24/7 Medical Chatbot. Whether yo
     ```bash
     pip install -r requirements.txt
     ```
-
-3. Set up environment variables:
-
-    - Ensure you have a valid Hugging Face API token and set it as an environment variable named `HUGGINGFACEHUB_API_TOKEN`.
   
-4. Run the application:
+3. Run the application:<br>
     Run app.py and bot.py 
